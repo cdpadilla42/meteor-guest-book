@@ -6,6 +6,7 @@ const GuestForm = () => {
     name: '',
     message: '',
   });
+  const [error, setError] = useState(null);
 
   function handleChange(e) {
     setInputs({
@@ -23,7 +24,10 @@ const GuestForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    Meteor.call('posts.add', inputs);
+    setError(null);
+    Meteor.call('posts.add', { name: inputs.name }, (err, res) => {
+      if (err) setError(err);
+    });
     clearForm();
   }
 
@@ -31,6 +35,7 @@ const GuestForm = () => {
     <form className="post_form" method="POST" onSubmit={handleSubmit}>
       <fieldset>
         <h2>Leave a message!</h2>
+        {error && 'Woops! Something went wrong'}
         <input
           type="text"
           name="name"
