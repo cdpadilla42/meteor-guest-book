@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { PostsCollection } from '../imports/api/posts';
+import '../imports/api/postsPublication';
 
 function insertPost(newPost) {
   PostsCollection.schema.validate(newPost);
