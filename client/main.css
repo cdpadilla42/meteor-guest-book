@@ -18,10 +18,15 @@ li {
   margin: 2rem;
   padding: 1rem;
   border-radius: 10px;
+  display: flex;
 }
 
 li span:first-child {
   margin-right: 1rem;
+}
+
+li span:nth-child(2) {
+  flex: 1;
 }
 
 textarea {

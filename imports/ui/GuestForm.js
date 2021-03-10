@@ -25,7 +25,7 @@ const GuestForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
     setError(null);
-    Meteor.call('posts.add', { name: inputs.name }, (err, res) => {
+    Meteor.call('posts.add', inputs, (err, res) => {
       if (err) setError(err);
     });
     clearForm();
