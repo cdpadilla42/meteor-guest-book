@@ -12,7 +12,7 @@ const Posts = () => {
       return { loading: true };
     }
 
-    const posts = PostsCollection.find({}).fetch();
+    const posts = PostsCollection.find({}, { sort: { createdAt: -1 } }).fetch();
     return { posts };
   });
 

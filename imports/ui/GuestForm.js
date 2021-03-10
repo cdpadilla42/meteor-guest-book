@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 
 const GuestForm = () => {
   const [inputs, setInputs] = useState({
@@ -22,7 +23,7 @@ const GuestForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(inputs);
+    Meteor.call('posts.add', inputs);
     clearForm();
   }
 
