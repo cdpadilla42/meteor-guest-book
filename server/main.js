@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { PostsCollection } from '../imports/api/posts';
 
-function insertPost({ name, message }) {
-  PostsCollection.insert({ name, message, createdAt: new Date() });
+function insertPost(newPost) {
+  PostsCollection.schema.validate(newPost);
+  PostsCollection.insert({ ...newPost, createdAt: new Date() });
 }
 
 Meteor.startup(() => {
