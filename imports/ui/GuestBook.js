@@ -1,18 +1,13 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import GuestForm from './GuestForm';
-import { useTracker } from 'meteor/react-meteor-data';
+
+import Posts from './Posts';
 
 const GuestBook = () => {
-  const data = useTracker(() => {
-    const posts = Meteor.subscribe('posts');
-
-    return posts;
-  });
-
   return (
     <div>
       <GuestForm />
+      <Posts />
     </div>
   );
 };
